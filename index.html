@@ -1,0 +1,730 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>YU</title>
+
+<style>
+html,body{
+	margin:0px;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	background:#000;
+}
+.circleProgress_wrapper{
+			margin: auto;
+			position: relative;
+			width: 200px;
+			height: 200px;
+			overflow: hidden;
+			border-radius: 50%;
+			box-sizing: border-box;
+			cursor: pointer;
+			
+		}
+		.circleProgress_wrapper:before{
+			position: absolute;
+			content: "";
+			width: 100%;
+			height: 100%;
+			background:rgba(0,0,0,0.1) url("http://1.116.226.207/res/fish.jpg"); 
+			background-size: cover;
+			border-radius: 50%;
+
+		}
+		.circleProgress_wrapper.rotate:before{
+			animation:audioLogoRotate 10s linear infinite;
+		}
+		@keyframes audioLogoRotate{
+			0%{
+				transform: rotate(0deg)
+			}
+			100%{
+				transform: rotate(360deg);
+			}
+		}
+		.circleProgress_wrapper:after{
+			position: absolute;
+			top:4px;
+			left: 4px;
+			content: "";
+			width: 192px;
+			height: 192px;
+			border-radius: 50%;
+			background-color:rgba(0,0,0,0.3); 
+			background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAoCAMAAACl6XjsAAAAaVBMVEX///8AAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9ThU/0AAAAI3RSTlPMAJDBnhcQxrqzemtSOiMGAoZfLKqkjXBECoiFhGJIRi4MC3M9axoAAACkSURBVDjLrZRLDoMwDERdwKGkTSkt/X/h/ocEsZmdPVJ46ydFGdsj4VpWaeMhN5kpDp5WyEIMlCblqXW1heZnaqA6mxrolNKk3o2WBrb7o6WBPhEa4nY1qWNwNMRtaaC5exrihmbxVltD3A9HQ9zQLC5KadKRGv0o/4X8QF5KDosfff4ixbDWkvcp9wAR50Cc81OZqvkzxfVlavDTkqWaX9Fk4U9wrwfK2T44TgAAAABJRU5ErkJggg==');
+			background-repeat:no-repeat;
+			background-position:center;
+			background-size:38px 40px;
+		}
+		.circleProgress_wrapper.rotate:after{
+			background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAiCAMAAAAJbCvNAAAAM1BMVEX///8AAAD///////////////////////////////////////////////////////////+Q8lQ3AAAAEXRSTlPmAOEXHcLcvrtvZlER1IyHDEwQIaQAAABJSURBVDjL7ctbEoAgDEPRBLWK4mP/q/XDIGUJzPT+NXOKY1u+1p2qm2D4ewTONhXCNQmkNs0BAgQYFrirCJj/Qa4i3VTZ6nSRL9xqAzIch8kgAAAAAElFTkSuQmCC');
+			background-size:32px 34px;
+		}
+		.slice{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			clip:rect(0,200px,200px,100px);
+		}
+		.slice.gt50{
+			clip:rect(auto,auto,auto,auto);
+		}
+		.bar,.fill{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border: 4px rgba(255, 249, 0, 0.77) solid;
+			box-sizing: border-box;
+			border-radius: 50%;
+			clip: rect(0,100px,200px,0);
+		}
+		.slice.gt50 .fill{
+			transform: rotate(180deg);
+		}		.circleProgress_wrapper{
+			margin: auto;
+			position: relative;
+			width: 200px;
+			height: 200px;
+			overflow: hidden;
+			border-radius: 50%;
+			box-sizing: border-box;
+			cursor: pointer;
+			
+		}
+		.circleProgress_wrapper:before{
+			position: absolute;
+			content: "";
+			width: 100%;
+			height: 100%;
+			background:rgba(0,0,0,0.1) url("http://1.116.226.207/res/fish.jpg"); 
+			background-size: cover;
+			border-radius: 50%;
+
+		}
+		.circleProgress_wrapper.rotate:before{
+			animation:audioLogoRotate 10s linear infinite;
+		}
+		@keyframes audioLogoRotate{
+			0%{
+				transform: rotate(0deg)
+			}
+			100%{
+				transform: rotate(360deg);
+			}
+		}
+		.circleProgress_wrapper:after{
+			position: absolute;
+			top:4px;
+			left: 4px;
+			content: "";
+			width: 192px;
+			height: 192px;
+			border-radius: 50%;
+			background-color:rgba(0,0,0,0.3); 
+			background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAoCAMAAACl6XjsAAAAaVBMVEX///8AAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9ThU/0AAAAI3RSTlPMAJDBnhcQxrqzemtSOiMGAoZfLKqkjXBECoiFhGJIRi4MC3M9axoAAACkSURBVDjLrZRLDoMwDERdwKGkTSkt/X/h/ocEsZmdPVJ46ydFGdsj4VpWaeMhN5kpDp5WyEIMlCblqXW1heZnaqA6mxrolNKk3o2WBrb7o6WBPhEa4nY1qWNwNMRtaaC5exrihmbxVltD3A9HQ9zQLC5KadKRGv0o/4X8QF5KDosfff4ixbDWkvcp9wAR50Cc81OZqvkzxfVlavDTkqWaX9Fk4U9wrwfK2T44TgAAAABJRU5ErkJggg==');
+			background-repeat:no-repeat;
+			background-position:center;
+			background-size:38px 40px;
+		}
+		.circleProgress_wrapper.rotate:after{
+			background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAiCAMAAAAJbCvNAAAAM1BMVEX///8AAAD///////////////////////////////////////////////////////////+Q8lQ3AAAAEXRSTlPmAOEXHcLcvrtvZlER1IyHDEwQIaQAAABJSURBVDjL7ctbEoAgDEPRBLWK4mP/q/XDIGUJzPT+NXOKY1u+1p2qm2D4ewTONhXCNQmkNs0BAgQYFrirCJj/Qa4i3VTZ6nSRL9xqAzIch8kgAAAAAElFTkSuQmCC');
+			background-size:32px 34px;
+		}
+		.slice{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			clip:rect(0,200px,200px,100px);
+		}
+		.slice.gt50{
+			clip:rect(auto,auto,auto,auto);
+		}
+		.bar,.fill{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border: 4px rgba(243, 31, 101, 0.648) solid;
+			box-sizing: border-box;
+			border-radius: 50%;
+			clip: rect(0,100px,200px,0);
+		}
+		.slice.gt50 .fill{
+			transform: rotate(180deg);
+		}
+		.footer { width:200px; height:200px; background:rgb(0, 0, 0); position:absolute; bottom:7em;z-index: 10000; right: 7em;-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+</style>
+
+</head>
+<body>
+	<div style="width:500px; height:200px; background:rgba(255, 255, 255, 0); position:absolute; bottom:7em;z-index: 100010; left: 7em;-webkit-tap-highlight-color:rgba(0,0,0,0);">
+		<p style="font-size: 45px; color: rgba(255, 243, 249, 0.835);font-family: PingFang SC;" id="lyric"></p>
+	</div>
+	<div class="footer" id="player">
+		<div class="circleProgress_wrapper">
+			<div id="slice_wrapper" class="slice">
+				<div class="bar pre50"></div>
+				<div class="fill"></div>
+			</div>
+		</div>
+	</div>
+<canvas id="canvas" style="position:absolute;width:100%;height:100%;z-index:8888"></canvas>
+<canvas style="position:absolute;width:100%;height:100%;z-index:9999" class="canvas" ></canvas>
+<div class="overlay">
+  <div class="tabs">
+    <div class="tabs-labels"><span class="tabs-label">Commands</span><span class="tabs-label">Info</span><span class="tabs-label">Share</span></div>
+
+    <div class="tabs-panels">
+      <ul class="tabs-panel commands">
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+<!-- <script src="js/vconsole.min.js"></script> -->
+<script>
+// var vConsole = new VConsole();
+function initVars(){
+
+	pi=Math.PI;
+	ctx=canvas.getContext("2d");
+	canvas.width=canvas.clientWidth;
+	canvas.height=canvas.clientHeight;
+	cx=canvas.width/2;
+	cy=canvas.height/2;
+	playerZ=-85;
+	playerX=playerY=playerVX=playerVY=playerVZ=pitch=yaw=pitchV=yawV=0;
+	scale=600;
+	//seedTimer=0;seedInterval=5,seedLife=100;gravity=.02;
+	//修改初始化参数
+	seedTimer=0;seedInterval=20,seedLife=100;gravity=.01;
+	seeds=new Array();
+	sparkPics=new Array();
+	s="https://cantelope.org/NYE/";
+	powUrl = "res/";
+	for(i=1;i<=10;++i){
+		sparkPic=new Image();
+		sparkPic.src=s+"spark"+i+".png";
+		sparkPics.push(sparkPic);
+	}
+	sparks=new Array();
+	pows = new Array();
+	pow1 = new Audio("http://1.116.226.207/res/pow1.mp3");
+	pow2 = new Audio("http://1.116.226.207/res/pow2.mp3");
+	pow3 = new Audio("http://1.116.226.207/res/pow3.mp3");
+	pow4 = new Audio("http://1.116.226.207/res/pow4.mp3");
+	pows.push(pow1);
+	pows.push(pow2);
+	pows.push(pow3);
+	pows.push(pow4);
+	
+	frames = 0;
+}
+
+function rasterizePoint(x,y,z){
+
+	var p,d;
+	x-=playerX;
+	y-=playerY;
+	z-=playerZ;
+	p=Math.atan2(x,z);
+	d=Math.sqrt(x*x+z*z);
+	x=Math.sin(p-yaw)*d;
+	z=Math.cos(p-yaw)*d;
+	p=Math.atan2(y,z);
+	d=Math.sqrt(y*y+z*z);
+	y=Math.sin(p-pitch)*d;
+	z=Math.cos(p-pitch)*d;
+	var rx1=-1000,ry1=1,rx2=1000,ry2=1,rx3=0,ry3=0,rx4=x,ry4=z,uc=(ry4-ry3)*(rx2-rx1)-(rx4-rx3)*(ry2-ry1);
+	if(!uc) return {x:0,y:0,d:-1};
+	var ua=((rx4-rx3)*(ry1-ry3)-(ry4-ry3)*(rx1-rx3))/uc;
+	var ub=((rx2-rx1)*(ry1-ry3)-(ry2-ry1)*(rx1-rx3))/uc;
+	if(!z)z=.000000001;
+	if(ua>0&&ua<1&&ub>0&&ub<1){
+		return {
+			x:cx+(rx1+ua*(rx2-rx1))*scale,
+			y:cy+y/z*scale,
+			d:Math.sqrt(x*x+y*y+z*z)
+		};
+	}else{
+		return {
+			x:cx+(rx1+ua*(rx2-rx1))*scale,
+			y:cy+y/z*scale,
+			d:-1
+		};
+	}
+}
+
+function spawnSeed(){
+
+	seed=new Object();
+	seed.x=-50+Math.random()*100;
+	seed.y=25;
+	seed.z=-50+Math.random()*100;
+	seed.vx=.1-Math.random()*.2;
+	seed.vy=-1.4;//*(1+Math.random()/2);
+	seed.vz=.1-Math.random()*.2;
+	seed.born=frames;
+	// seedtrail的轨迹
+	seed.trail = new Array();
+	seeds.push(seed);
+}
+
+function splode(x,y,z){
+	//spark的数量
+	t=100+parseInt(Math.random()*150);
+	sparkV=1+Math.random()*2.5;
+	type=parseInt(Math.random()*3);
+	switch(type){
+		case 0:
+			pic1=parseInt(Math.random()*10);
+			break;
+		case 1:
+			pic1=parseInt(Math.random()*10);
+			do{ pic2=parseInt(Math.random()*10); }while(pic2==pic1);
+			break;
+		case 2:
+			pic1=parseInt(Math.random()*10);
+			do{ pic2=parseInt(Math.random()*10); }while(pic2==pic1);
+			do{ pic3=parseInt(Math.random()*10); }while(pic3==pic1 || pic3==pic2);
+			break;
+	}
+	for(m=1;m<t;++m){
+		spark=new Object();
+		spark.x=x; spark.y=y; spark.z=z;
+		p1=pi*2*Math.random();
+		p2=pi*Math.random();
+		v=sparkV*(1+Math.random()/6)
+		spark.vx=Math.sin(p1)*Math.sin(p2)*v;
+		spark.vz=Math.cos(p1)*Math.sin(p2)*v;
+		spark.vy=Math.cos(p2)*v;
+		switch(type){
+			case 0: spark.img=sparkPics[pic1]; break;
+			case 1:
+				spark.img=sparkPics[parseInt(Math.random()*2)?pic1:pic2];
+				break;
+			case 2:
+				switch(parseInt(Math.random()*3)){
+					case 0: spark.img=sparkPics[pic1]; break;
+					case 1: spark.img=sparkPics[pic2]; break;
+					case 2: spark.img=sparkPics[pic3]; break;
+				}
+				break;
+		}
+		spark.radius=25+Math.random()*50;
+		spark.alpha=1;
+		spark.trail=new Array();
+		sparks.push(spark);
+	}
+	// var pow=new Object();
+	// switch(parseInt(Math.random()*4)){
+	// 	case 0:	pow=pow1; break;
+	// 	case 1:	pow=pow2; break;
+	// 	case 2:	pow=pow3; break;
+	// 	case 3:	pow=pow4; break;
+	// }
+	d=Math.sqrt((x-playerX)*(x-playerX)+(y-playerY)*(y-playerY)+(z-playerZ)*(z-playerZ));
+	pows[parseInt(Math.random()*4)].volume=2/(1+d/10);
+	// console.log("pow volume is ", pows[parseInt(Math.random()*4)].volume);
+	// console.log("pow src: ",pows[parseInt(Math.random()*4)].src);
+	// console.log("pow readystate", pows[parseInt(Math.random()*4)].readyState);
+	// console.log("pow frame: ", frames);
+	pows[parseInt(Math.random()*4)].play();
+}
+
+function doLogic(){
+
+	if(seedTimer<frames){
+		seedTimer=frames+seedInterval*Math.random()*10;
+		spawnSeed();
+	}
+	for(i=0;i<seeds.length;++i){
+		seeds[i].vy+=gravity;
+		seeds[i].x+=seeds[i].vx;
+		seeds[i].y+=seeds[i].vy;
+		seeds[i].z+=seeds[i].vz;
+		if(frames-seeds[i].born>seedLife){
+			splode(seeds[i].x,seeds[i].y,seeds[i].z);
+			seeds.splice(i,1);
+		} else {
+			//计算seedtrail数量
+			pointSeed = new Object();
+			pointSeed.x = seeds[i].x;
+			pointSeed.y = seeds[i].y;
+			pointSeed.z = seeds[i].z;
+			if (seeds[i].trail.length) {
+				x = seeds[i].trail[seeds[i].trail.length - 1].x;
+				y = seeds[i].trail[seeds[i].trail.length - 1].y;
+				z = seeds[i].trail[seeds[i].trail.length - 1].z;
+				d = ((pointSeed.x - x) * (pointSeed.x - x) + (pointSeed.y - y) * (pointSeed.y - y) + (pointSeed.z - z) * (pointSeed.z - z));
+				if (d > 9) {
+					seeds[i].trail.push(pointSeed);
+				}
+			}
+			else {
+				seeds[i].trail.push(pointSeed);
+			}
+			// 轨迹中点的数量
+			if (seeds[i].trail.length > 8) seeds[i].trail.splice(0, 1);
+			//计算seedtrail数量结束
+		}
+	}
+	for(i=0;i<sparks.length;++i){
+		if(sparks[i].alpha>0 && sparks[i].radius>5){
+			sparks[i].alpha-=.008;
+			sparks[i].radius/=1.01;
+			sparks[i].vy+=gravity;
+			point=new Object();
+			point.x=sparks[i].x;
+			point.y=sparks[i].y;
+			point.z=sparks[i].z;
+			if(sparks[i].trail.length){
+				x=sparks[i].trail[sparks[i].trail.length-1].x;
+				y=sparks[i].trail[sparks[i].trail.length-1].y;
+				z=sparks[i].trail[sparks[i].trail.length-1].z;
+				d=((point.x-x)*(point.x-x)+(point.y-y)*(point.y-y)+(point.z-z)*(point.z-z));
+				if(d>9){
+					sparks[i].trail.push(point);
+				}
+			}else{
+				sparks[i].trail.push(point);
+			}
+			if(sparks[i].trail.length>10)sparks[i].trail.splice(0,1);
+			sparks[i].x+=sparks[i].vx;
+			sparks[i].y+=sparks[i].vy;
+			sparks[i].z+=sparks[i].vz;
+			sparks[i].vx/=1.09;
+			sparks[i].vy/=1.09;
+			sparks[i].vz/=1.09;
+		}else{
+			sparks.splice(i,1);
+		}
+	}
+	p=Math.atan2(playerX,playerZ);
+	d=Math.sqrt(playerX*playerX+playerZ*playerZ);
+	//d和t后面的分母决定旋转周期
+	d+=Math.sin(frames/80)/10;
+	t=Math.sin(frames/200)/200;
+	playerX=Math.sin((p+t))*d;
+	playerZ=Math.cos((p+t))*d;
+	yaw=pi+p+t;
+}
+
+function rgb(col){
+
+	var r = parseInt((.5+Math.sin(col)*.5)*16);
+	var g = parseInt((.5+Math.cos(col)*.5)*16);
+	var b = parseInt((.5-Math.sin(col)*.5)*16);
+	return "#"+r.toString(16)+g.toString(16)+b.toString(16);
+}
+
+function draw(){
+
+	ctx.clearRect(0,0,cx*2,cy*2);
+
+	//ctx.fillStyle="#ff8";
+	ctx.fillStyle="#FF1493";
+	for(i=-100;i<100;i+=3){
+		for(j=-100;j<100;j+=4){
+			x=i;z=j;y=25;
+			point=rasterizePoint(x,y,z);
+			if(point.d!=-1){
+				size=200/(1+point.d);
+				d = Math.sqrt(x * x + z * z);
+				a = 0.75 - Math.pow(d / 100, 6) * 0.75;
+				if(a>0){
+					ctx.globalAlpha = a;
+					// 底部的点阵
+					ctx.fillRect(point.x-size/2,point.y-size/2,size,size);
+				}
+			}
+		}
+	}
+	ctx.globalAlpha=1;
+	for(i=0;i<seeds.length;++i){
+		point=rasterizePoint(seeds[i].x,seeds[i].y,seeds[i].z);
+		if(point.d!=-1){
+			size=100/(1+point.d);
+			//seed形状
+			//ctx.fillRect(point.x-size/2,point.y-size/2,size,size);
+			ctx.fillStyle="#ffffff";
+			ctx.beginPath();
+			ctx.arc(point.x-size/2,point.y-size/2,size,0,2*Math.PI);
+			ctx.closePath();
+			ctx.fill();
+		}
+		// 画seedtrail开始
+		seedTrailPoint1 = new Object();
+		if(seeds[i].trail.length){
+			seedTrailPoint1.x = point.x;
+			seedTrailPoint1.y = point.y;
+			for(j=seeds[i].trail.length-1;j>=0;--j) {
+				switch (j) {
+					case 0: ctx.strokeStyle = "#ffff00"; break;
+					case 1: ctx.strokeStyle = "#ffff33"; break;
+					case 2: ctx.strokeStyle = "#ffff66"; break;
+					case 3: ctx.strokeStyle = "#ffff99"; break;
+					case 4: ctx.strokeStyle = "#ffffcc"; break;
+					case 5: ctx.strokeStyle = "#ffffff"; break;
+					case 6: ctx.strokeStyle = "#ffffff"; break;
+					case 7: ctx.strokeStyle = "#ffffff"; break;
+					case 8: ctx.strokeStyle = "#ffffff"; break;
+				}
+				seedTrailPoint2 = rasterizePoint(seeds[i].trail[j].x, seeds[i].trail[j].y, seeds[i].trail[j].z);
+				if(seedTrailPoint2.d!=-1) {
+					ctx.globalAlpha = j/8;
+					ctx.beginPath();
+					ctx.moveTo(seedTrailPoint1.x, seedTrailPoint1.y);
+					ctx.lineWidth=100+seeds[i].radius*10/(seeds[i].trail.length-j)/(1+seedTrailPoint2.d);
+					ctx.lineTo(seedTrailPoint2.x, seedTrailPoint2.y);
+					ctx.stroke();
+					seedTrailPoint1.x = seedTrailPoint2.x;
+					seedTrailPoint1.y = seedTrailPoint2.y;
+				}
+			}
+		}
+		//画seedtrail结束
+	}
+	point1=new Object();
+	for(i=0;i<sparks.length;++i){
+		point=rasterizePoint(sparks[i].x,sparks[i].y,sparks[i].z);
+		if(point.d!=-1){
+			size=sparks[i].radius*200/(1+point.d);
+			if(sparks[i].alpha<0)sparks[i].alpha=0;
+			if(sparks[i].trail.length){
+				point1.x=point.x;
+				point1.y=point.y;
+				switch(sparks[i].img){
+					case sparkPics[0]:ctx.strokeStyle="#f84";break;
+					case sparkPics[1]:ctx.strokeStyle="#84f";break;
+					case sparkPics[2]:ctx.strokeStyle="#8ff";break;
+					case sparkPics[3]:ctx.strokeStyle="#fff";break;
+					case sparkPics[4]:ctx.strokeStyle="#4f8";break;
+					case sparkPics[5]:ctx.strokeStyle="#f44";break;
+					case sparkPics[6]:ctx.strokeStyle="#f84";break;
+					case sparkPics[7]:ctx.strokeStyle="#84f";break;
+					case sparkPics[8]:ctx.strokeStyle="#fff";break;
+					case sparkPics[9]:ctx.strokeStyle="#44f";break;
+				}
+				for(j=sparks[i].trail.length-1;j>=0;--j){
+					point2=rasterizePoint(sparks[i].trail[j].x,sparks[i].trail[j].y,sparks[i].trail[j].z);
+					if(point2.d!=-1){
+						ctx.globalAlpha=j/sparks[i].trail.length*sparks[i].alpha/1;
+						ctx.beginPath();
+						ctx.moveTo(point1.x,point1.y);
+						ctx.lineWidth=1+sparks[i].radius*10/(sparks[i].trail.length-j)/(1+point2.d);
+						ctx.lineTo(point2.x,point2.y);
+						ctx.stroke();
+						point1.x=point2.x;
+						point1.y=point2.y;
+					}
+				}
+			}
+			ctx.globalAlpha=sparks[i].alpha;
+			//ctx.drawImage(sparks[i].img,point.x-size/2,point.y-size/2,size,size);
+		}
+	}
+}
+
+function frame(){
+
+	if(frames>100000){
+		seedTimer=0;
+		frames=0;
+	}
+	frames++;
+	draw();
+	doLogic();
+	requestAnimationFrame(frame);
+}
+
+window.addEventListener("resize",()=>{
+	canvas.width=canvas.clientWidth;
+	canvas.height=canvas.clientHeight;
+	cx=canvas.width/2;
+	cy=canvas.height/2;
+});
+
+	// var ua = window.navigator.userAgent.toLowerCase();
+	// if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+	// 	console.log("进入微信");
+	// 	wx.config({
+	// 		// 配置微信js信息, 即使不正确也能使用 wx.ready
+	// 		debug: false,
+	// 		appId: 'sdfasdfadfdf',
+	// 		timestamp: 1,
+	// 		nonceStr: '',
+	// 		signature: '',
+	// 		jsApiList: []
+	// 	});
+	// 	wx.ready(function () {
+	// 		console.log("微信ready");
+	// 		initVars();
+	// 		frame();
+			
+	// 	});
+	// } else {
+	// 	console.log("非微信agent");
+	// 	initVars();
+	// 	frame();
+	// }
+
+</script>
+<script src="js/index.js"></script>
+<script type="text/javascript" src="js/audioPlayPlugin.js"></script>
+<script>
+	var bar=document.querySelector(".slice>.bar"),
+		process=0,
+		circleProgress=document.querySelector(".circleProgress_wrapper"),
+		slice=document.getElementById("slice_wrapper");
+	var audio=new audioController({
+					src:"http://1.116.226.207/res/aijiuyigezi.mp3",
+					attr:{
+						 loop:true,
+						 volume:1,
+						 autoplay:true
+					 },
+					events:{
+						"play":function(){
+							addClass(circleProgress,"rotate");
+						},
+						"timeupdate":function(){
+							process=audio.getAttr("currentTime")/audio.getAttr("duration")*360;
+							parseInt(process)===180&&addClass(slice,"gt50");
+							bar.style="transform:rotate("+(process)+"deg)";
+						},
+						"pause":function(){
+							removeClass(circleProgress,"rotate");
+						},
+						"ended":function(){
+							removeClass(circleProgress,"rotate");
+							removeClass(slice,"gt50");
+							bar.style="transform:rotate(0deg)";
+						}
+					}
+			});
+
+	 circleProgress.addEventListener("click",function(){
+		 if(audio.getAttr("paused")){				 			
+			 audio.play()
+		 }else{
+			 audio.pause()
+		 }
+	 });
+
+	 function addClass(element,className){
+		 var oldClass=element.className;
+		 oldClass.indexOf(className)<0&&(element.className=oldClass+" "+className);
+	 }
+	 function removeClass(element,className){
+		 element.className=element.className.replace(new RegExp("\\s"+className),"");
+	 }
+	 var oLRC = {
+					ti: "", //歌曲名
+					ar: "", //演唱者
+					al: "", //专辑名
+					by: "", //歌词制作人
+					offset: 0, //时间补偿值，单位毫秒，用于调整歌词整体位置
+					ms: [] //歌词数组{t:时间,c:歌词}
+				};
+		var ua = window.navigator.userAgent.toLowerCase();
+		if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+			wx.config({
+				// 配置微信js信息, 即使不正确也能使用 wx.ready
+				debug: false,
+				appId: 'sdfasdfadfdf',
+				timestamp: 1,
+				nonceStr: '',
+				signature: '',
+				jsApiList: []
+			});
+			wx.ready(function () {
+				// console.log("weixin ready");
+				initVars();
+				frame();
+				audio.play();
+				
+				getLRC();
+				var lrc = "";
+
+				
+
+			});
+		} else {
+			initVars();
+			frame();
+			audio.play();
+			getLRC();
+		}
+		
+	 function getLRC() {
+
+					lrc = "[00:22.98]拨开天空的乌云\n[00:26.04]像蓝丝绒一样美丽\n[00:29.77]我为你翻山越岭\n[00:33.47]却无心看风景\n[00:37.33]我想你 身不由己\n[00:41.96]每个念头有新的梦境\n[00:44.93]但愿你 没忘记\n[00:49.41]我永远保护你\n[00:51.74]不管风雨的打击 全心全意\n[00:58.08]两个人相互辉映\n[01:01.69]光芒胜过夜晚繁星\n[01:05.36]我为你翻山越岭\n[01:09.07]却无心看风景\n[01:12.85]我想你 鼓足勇气\n[01:17.22]凭爱的地图散播讯息\n[01:20.63]但愿你 没忘记\n[01:25.16]我永远保护你\n[01:27.48]从此不必再流浪找寻\n[01:32.69]爱就一个字 我只说一次\n[01:36.52]你知道我只会用行动表示\n[01:40.75]烟花太放肆 守住了坚持\n[01:45.84]看我为你孤注一掷\n[01:48.54]爱就一个字 我只说一次\n[01:52.37]恐怕听见的人勾起了相思\n[01:56.58]任老的城市 搜索你的影子\n[02:00.92]让你幸福我愿意试\n[00:00.000]MICKEY PRESENTS TO YU";
+					// console.log(lrc);
+					createLrcObj(lrc);
+					var lineNo = 0;
+					document.getElementById("lyric").innerHTML = oLRC.ms[lineNo].c;
+					audio.events("timeupdate", function () {
+						// console.log("时间更新",oLRC.ms.length);
+						if (lineNo == oLRC.ms.length)
+							return;
+						var curTime = audio.getAttr("currentTime"); //播放器时间
+						if (parseFloat(oLRC.ms[lineNo].t + 1 ) <= curTime) {
+							// console.log("设置歌词：", oLRC.ms[lineNo].c);
+							document.getElementById("lyric").innerHTML = oLRC.ms[lineNo].c;
+							lineNo++;
+						}
+					});
+
+				}
+
+				function createLrcObj(lrc) {
+					// console.log("lyric 进来", lrc.length);
+					if (lrc.length == 0) return;
+					var lrcs = lrc.split('\n');//用回车拆分成数组
+					for (var i in lrcs) {//遍历歌词数组
+						lrcs[i] = lrcs[i].replace(/(^\s*)|(\s*$)/g, ""); //去除前后空格
+						var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));//取[]间的内容
+						var s = t.split(":");//分离:前后文字
+						if (isNaN(parseInt(s[0]))) { //不是数值
+							for (var i in oLRC) {
+								if (i != "ms" && i == s[0].toLowerCase()) {
+									oLRC[i] = s[1];
+								}
+							}
+						} else { //是数值
+							var arr = lrcs[i].match(/\[(\d+:.+?)\]/g);//提取时间字段，可能有多个
+							var start = 0;
+							for (var k in arr) {
+								start += arr[k].length; //计算歌词位置
+							}
+							var content = lrcs[i].substring(start);//获取歌词内容
+							for (var k in arr) {
+								var t = arr[k].substring(1, arr[k].length - 1);//取[]间的内容
+								var s = t.split(":");//分离:前后文字
+								oLRC.ms.push({//对象{t:时间,c:歌词}加入ms数组
+									t: (parseFloat(s[0]) * 60 + parseFloat(s[1])).toFixed(3),
+									c: content
+								});
+							}
+						}
+					}
+					oLRC.ms.sort(function (a, b) {//按时间顺序排序
+						return a.t - b.t;
+					});
+
+					// for(var i in oLRC){ //查看解析结果
+					//     console.log(i,":",oLRC[i]);
+					// }
+					// console.log("lyric 结束");
+
+				}
+</script>
+<script>
+
+</script>
+</body>
+</html>
