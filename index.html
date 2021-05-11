@@ -1,8 +1,8 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>YU</title>
+<title>HAPPY BIRTHDAY TO DEAR YU</title>
 
 <style>
 html,body{
@@ -203,7 +203,7 @@ function initVars(){
 	seedTimer=0;seedInterval=20,seedLife=100;gravity=.01;
 	seeds=new Array();
 	sparkPics=new Array();
-	s="https://cantelope.org/NYE/";
+	s="http://1.116.226.207/res/";
 	powUrl = "res/";
 	for(i=1;i<=10;++i){
 		sparkPic=new Image();
@@ -524,7 +524,7 @@ function draw(){
 				}
 			}
 			ctx.globalAlpha=sparks[i].alpha;
-			//ctx.drawImage(sparks[i].img,point.x-size/2,point.y-size/2,size,size);
+			ctx.drawImage(sparks[i].img,point.x-size/2,point.y-size/2,size,size);
 		}
 	}
 }
@@ -643,8 +643,12 @@ window.addEventListener("resize",()=>{
 			});
 			wx.ready(function () {
 				// console.log("weixin ready");
-				initVars();
-				frame();
+				setTimeout(function(){
+					initVars();
+					frame();
+				},12500);
+				//initVars();
+				//frame();
 				audio.play();
 				
 				getLRC();
@@ -662,7 +666,7 @@ window.addEventListener("resize",()=>{
 		
 	 function getLRC() {
 
-					lrc = "[00:22.98]拨开天空的乌云\n[00:26.04]像蓝丝绒一样美丽\n[00:29.77]我为你翻山越岭\n[00:33.47]却无心看风景\n[00:37.33]我想你 身不由己\n[00:41.96]每个念头有新的梦境\n[00:44.93]但愿你 没忘记\n[00:49.41]我永远保护你\n[00:51.74]不管风雨的打击 全心全意\n[00:58.08]两个人相互辉映\n[01:01.69]光芒胜过夜晚繁星\n[01:05.36]我为你翻山越岭\n[01:09.07]却无心看风景\n[01:12.85]我想你 鼓足勇气\n[01:17.22]凭爱的地图散播讯息\n[01:20.63]但愿你 没忘记\n[01:25.16]我永远保护你\n[01:27.48]从此不必再流浪找寻\n[01:32.69]爱就一个字 我只说一次\n[01:36.52]你知道我只会用行动表示\n[01:40.75]烟花太放肆 守住了坚持\n[01:45.84]看我为你孤注一掷\n[01:48.54]爱就一个字 我只说一次\n[01:52.37]恐怕听见的人勾起了相思\n[01:56.58]任老的城市 搜索你的影子\n[02:00.92]让你幸福我愿意试\n[00:00.000]MICKEY PRESENTS TO YU";
+					lrc = "[00:22.98]拨开天空的乌云\n[00:26.04]像蓝丝绒一样美丽\n[00:29.77]我为你翻山越岭\n[00:33.47]却无心看风景\n[00:37.33]我想你 身不由己\n[00:41.96]每个念头有新的梦境\n[00:44.93]但愿你 没忘记\n[00:49.41]我永远保护你\n[00:51.74]不管风雨的打击 全心全意\n[00:58.08]两个人相互辉映\n[01:01.69]光芒胜过夜晚繁星\n[01:05.36]我为你翻山越岭\n[01:09.07]却无心看风景\n[01:12.85]我想你 鼓足勇气\n[01:17.22]凭爱的地图散播讯息\n[01:20.63]但愿你 没忘记\n[01:25.16]我永远保护你\n[01:27.48]从此不必再流浪找寻\n[01:32.69]爱就一个字 我只说一次\n[01:36.52]你知道我只会用行动表示\n[01:40.75]烟花太放肆 守住了坚持\n[01:45.84]看我为你孤注一掷\n[01:48.54]爱就一个字 我只说一次\n[01:52.37]恐怕听见的人勾起了相思\n[01:56.58]任老的城市 搜索你的影子\n[02:00.92]让你幸福我愿意试\n[00:00.000]MICKEY PRESENTS";
 					// console.log(lrc);
 					createLrcObj(lrc);
 					var lineNo = 0;
